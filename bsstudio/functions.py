@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget, QComboBox, QSpinBox, QDoubleSpinBox, QCheck
 #from bluesky.callbacks import LivePlot, LiveGrid
 import bsstudio.window
 import matplotlib.pyplot as plt
-from collections import Iterable
+from collections.abc import Iterable
 import time
 import re
 from IPython import get_ipython
