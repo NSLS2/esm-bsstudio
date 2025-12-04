@@ -199,6 +199,7 @@ class DataBrowser(CodeContainer):
 		self.loadScansButton.clicked.disconnect()
 		self.loadScansButton.clicked.connect(self.fr_thread.cancel)
 		dbGen = db(since=since, until=until, **dbKwargs)
+		#print("dbkwargs", dbKwargs)
 		self.fr_thread.dbGen = dbGen
 		self.fr_thread.start()
 		

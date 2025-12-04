@@ -18,6 +18,7 @@ from .widgets import OpenWindowButton
 from .widgets import ArrayImage
 from .widgets import BooleanLED
 from .widgets import BarUpdate
+from .widgets import MBSTable
 from PyQt5.QtDesigner import QPyDesignerTaskMenuExtension 
 from PyQt5.Qt import Qt
 from PyQt5.QtWidgets import QWidget
@@ -374,6 +375,7 @@ pOpenWindowButton = plugin_factory(OpenWindowButton)
 pArrayImage = plugin_factory(ArrayImage)
 pBooleanLED = plugin_factory(BooleanLED)
 pBarUpdate = plugin_factory(BarUpdate)
+pMBSTable = plugin_factory(MBSTable)
 
 bluesky_widgets_installed = False
 try:
