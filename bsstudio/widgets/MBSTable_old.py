@@ -310,3 +310,88 @@ class MBSTable(CodeContainer):
 
 
 
+	def filename_changed(self):
+#		print('--> filename_changed')
+#		dir ='/nsls2/data3/esm/legacy/image_files/spectrum_analyzer/' + self.dir_le.text() 
+		dir ='/nsls2/data3/esm/legacy/csv_files/XPS/2025/' + self.dir_le.text() 
+		nm = self.file_le.text()
+
+		l = os.listdir(dir)
+
+		files = []
+		for entry in l:
+			full_path = os.path.join(dir, entry)
+			if os.path.isfile(full_path):
+				files.append(entry)
+
+		l_nm  = []
+		for el in files:
+			if nm in el:
+				l_nm .append(int(el.split('_')[1][:-4])) 
+		if len(l_nm) == 0:
+			self.num_le.setText('001')
+		else:
+			i = max(l_nm)
+			if 0<i<=9:
+				self.num_le.setText('00'+'{}'.format(i))
+			elif 10<=i<=99:
+				self.num_le.setText('0'+'{}'.format(i))
+			elif 100<=i<=999:
+				self.num_le.setText('{}'.format(i))
+
+
+		with open('current_file.csv', 'w', newline='') as file:
+    			csv_writer = csv.writer(file)
+    			csv_writer.writerows([[self.dir_le.text(), nm, self.num_le.text(), self.usr_le.text()]])
+#		print('<-- filename_changed')
+
+	def dirname_changed(self):
+		print('--> direname_changed')
+#		dir =self.dir_le.text() 
+#		dir ='/nsls2/data3/esm/legacy/image_files/spectrum_analyzer/' + self.dir_le.text() 
+		dir ='/nsls2/data3/esm/legacy/csv_files/XPS/2025/' + self.dir_le.text() 
+		nm = self.file_le.text()
+		try:
+			os.makedirs(dir, exist_ok=True)
+			print(f"Directory '{dir}' created or already exists.")
+		except OSError as e:
+			print(f"Error creating directory '{dir}': {e}")
+			return
+		self.filename_changed()
+
+#		print('<-- dirname_changed')
+
+
+	def num_increase(self):
+#		print('--> num_increase')
+#		dir ='/nsls2/data3/esm/legacy/image_files/spectrum_analyzer/' + self.dir_le.text() 
+		dir ='/nsls2/data3/esm/legacy/csv_files/XPS/2025/' + self.dir_le.text() 
+		nm = self.file_le.text()
+
+		l = os.listdir(dir)
+		files = []
+		for entry in l:
+			full_path = os.path.join(dir, entry)
+			if os.path.isfile(full_path) and entry[0:3] !='XY_':
+				files.append(entry)
+
+		l_nm  = []
+		for el in files:
+			if nm in el:
+				l_nm .append(int(el.split('_')[1][:-4])) 
+		if len(l_nm) == 0:
+			self.num_le.setText('001')
+		else:
+			i = max(l_nm)+1
+			if 0<i<=9:
+				self.num_le.setText('00'+'{}'.format(i))
+			elif 10<=i<=99:
+				self.num_le.setText('0'+'{}'.format(i))
+			elif 100<=i<=999:
+				self.num_le.setText('{}'.format(i))
+
+
+		with open('current_file.csv', 'w', newline='') as file:
+    			csv_writer = csv.writer(file)
+    			csv_writer.writerows([[self.dir_le.text(), nm, self.num_le.text(), self.usr_le.text()]])
+#		print('<-- num_increase')
