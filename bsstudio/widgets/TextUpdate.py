@@ -1,4 +1,4 @@
-from PyQt5 import QtDesigner, QtGui, QtWidgets, QtCore
+from PyQt5 import QtDesigner, QtGui, QtWidgets, QtCore, sip
 #from qtpy.QtWidgets import QLabel, QApplication, QDoubleSpinBox, QWidget, QPushButton
 from PyQt5.QtWidgets import QLabel, QApplication, QDoubleSpinBox, QWidget, QPushButton, QPlainTextEdit, QFrame
 #from qtpy.QtDesigner import QExtensionFactory
@@ -16,7 +16,6 @@ import logging
 from ..worker import Worker
 import time
 import threading
-import sip
 from .REButton import makeProperty
 
 logger = logging.getLogger(__name__)

@@ -1,4 +1,3 @@
-import sip
 from PyQt5 import QtDesigner, QtGui, QtWidgets, QtCore
 #from qtpy.QtWidgets import QLabel, QApplication, QDoubleSpinBox, QWidget, QPushButton
 from PyQt5.QtWidgets import QLabel, QApplication, QDoubleSpinBox, QWidget, QPushButton, QPlainTextEdit

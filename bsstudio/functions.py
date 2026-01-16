@@ -6,7 +6,7 @@ from collections.abc import Iterable
 import time
 import re
 from IPython import get_ipython
-from .lib.pydollarmacro import pydollarmacro
+from .lib import pydollarmacro
 from functools import partial
 from io import StringIO
 
