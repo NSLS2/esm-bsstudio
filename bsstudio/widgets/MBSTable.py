@@ -170,8 +170,8 @@ class MBSTable(CodeContainer):
 		self.sequence_TW.itemChanged.connect(self.cell_changed)
 		[self.sequence_TW.cellWidget(i,7).currentTextChanged.connect(self.CB_lens_changed) for i in range(6)] # ComboBox Lens mode changed  
 		[self.sequence_TW.cellWidget(i,8).currentTextChanged.connect(self.CB_changed) for i in range(6)] # ComboBox Acquisition mode changed  
-		self.dir_le.returnPressed.connect(self.dirname_changed)
-		self.file_le.returnPressed.connect(self.filename_changed)
+		#self.dir_le.returnPressed.connect(self.dirname_changed)
+		#self.file_le.returnPressed.connect(self.filename_changed)
 
 
 	def showScrollBox(self, text):
