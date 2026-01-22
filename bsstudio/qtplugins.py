@@ -295,7 +295,6 @@ def plugin_factory(cls, is_container=False):
 				core = self.core
 				fileName = core.formWindowManager().activeFormWindow().fileName()
 				path = os.path.dirname(inspect.getfile(bsstudio))
-				path_import = "import sys\nsys.path.insert(0, '"+path+"')"
 
 				#cmd = 'ipython --profile=collection --matplotlib=qt5 -c "'+path_import+'\nimport bsstudio\nbsstudio.load(\\"'+fileName+'\\", verbose=True)"'
 				#cmd = 'bsui -c "'+path_import+'\nimport bsstudio\nbsstudio.load(\\"'+fileName+'\\", False, verbose=True)"'
@@ -303,7 +302,7 @@ def plugin_factory(cls, is_container=False):
 					#cmd = 'bsui -c "import bsstudio\nbsstudio.load(\\"'+fileName+'\\", False, verbose=True)"'
 					cmd = 'bsui -c "from PyQt5.QtWidgets import QApplication; app = QApplication([]); import bsstudio\nbsstudio.load(\\"'+fileName+'\\", False, verbose=True)"'
 				else:
-					cmd = 'ipython --profile=collection --matplotlib=qt5 -c "'+path_import+'\nimport bsstudio\nbsstudio.load(\\"'+fileName+'\\", verbose=True)"'
+					cmd = 'ipython --profile=collection --matplotlib=qt5 -c "\nimport bsstudio\nbsstudio.load(\\"'+fileName+'\\", verbose=True)"'
 					
 				#print(core.formWindowManager().children())
 				os.system(cmd + " &")
